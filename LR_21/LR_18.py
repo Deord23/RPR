@@ -288,6 +288,49 @@ class SaleOfGoods():
         ''' Деструктор класса SaleOfGoods '''
         print(f'Sale of goods {self._goods} has been deleted.')
 
+class fridge_goods(Goods):
+    ''' Класс товаров для хранения в холодильнике'''
+    def __init__(self, name, price, count, department, temperature_range):
+        ''' Конструктор класса fridge_goods'''
+        super().__init__(name, price, count, department)
+        self._temperature_range = temperature_range
+
+    @property
+    def temperature_range(self):
+        ''' Возвращает температурный режим хранения товара'''
+        return self._temperature_range
+
+    @temperature_range.setter
+    def temperature_range(self, new_temperature_range):
+        ''' Устанавливает новый температурный режим хранения товара'''
+        self._temperature_range = new_temperature_range
+
+    def __del__(self):
+        ''' Деструктор класса fridge_goods'''
+        print(f'Fridge goods {self._name} has been deleted.')
+
+class freezer_goods(Goods): 
+    ''' Класс товаров для хранения в морозильнике '''
+    def __init__(self, name, price, count, department, temperature_range):
+        ''' Конструктор класса freezer_goods '''
+        super().__init__(name, price, count, department)
+        self._temperature_range = temperature_range
+
+    @property
+    def temperature_range(self):
+        ''' Возвращает температурный режим хранения товара '''
+        return self._temperature_range
+
+    @temperature_range.setter
+    def temperature_range(self, new_temperature_range):
+        ''' Устанавливает новый температурный режим хранения товара '''
+        self._temperature_range = new_temperature_range
+        
+    
+    def __del__(self):
+        ''' Деструктор класса freezer_goods '''
+        print(f'Freezer goods {self._name} has been deleted.')
+        
 class DepartmentError(Exception):
     ''' Класс исключений для класса Department'''
     def __init__(self, message):
@@ -319,6 +362,21 @@ class SaleOfGoodsError(Exception):
     def __init__(self, message):
         self.message = message
     
+    def __str__(self):
+        return self.message
+class fridge_goodsError(Exception):
+    ''' Класс исключений для класса fridge_goods'''
+    def __init__(self, message):
+        self.message = message
+    
+    def __str__(self):
+        return self.message
+    
+class freezer_goodsError(Exception):
+    ''' Класс исключений для класса freezer_goods'''
+    def __init__(self, message):
+        self.message = message
+
     def __str__(self):
         return self.message
 
